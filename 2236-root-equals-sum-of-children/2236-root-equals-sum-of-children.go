@@ -1,15 +1,11 @@
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
  * }
  */
-/**
- * @param {TreeNode} root
- * @return {boolean}
- */
-var checkTree = function(root) {
-    return root.left.val + root.right.val === root.val
-};
+func checkTree(root *TreeNode) bool {
+    return root.Left.Val + root.Right.Val == root.Val
+}
