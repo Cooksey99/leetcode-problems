@@ -1,31 +1,29 @@
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
  * }
  */
-/**
- * @param {TreeNode} root
- * @param {number} low
- * @param {number} high
- * @return {number}
- */
-var rangeSumBST = function(root, low, high) {
-    let totalSum = 0;
-    const queue = [root];
+func rangeSumBST(root *TreeNode, low int, high int) int {
+    total := 0
+    queue := []*TreeNode{root}
     
-    while(queue.length > 0) {
-    // remove first element from queue and assign as currNode   
-    const currNode = queue.shift();
+    for len(queue) > 0 {
+        currNode := queue[0]
+        queue = queue[1:]
         
-    if(currNode.val >= low && currNode.val <= high) {
-        totalSum += currNode.val;
+        if currNode.Val >= low && currNode.Val <= high {
+            total = total + currNode.Val
+        }
+        
+        if currNode.Left != nil {
+            queue = append(queue, currNode.Left)
+        }
+        if currNode.Right != nil {
+            queue = append(queue, currNode.Right)
+        }
     }
-        
-    if(currNode.left) queue.push(currNode.left);
-    if(currNode.right) queue.push(currNode.right);
-    }        
-    return totalSum;
-};
+    return total
+}
