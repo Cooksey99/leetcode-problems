@@ -7,9 +7,9 @@ var numJewelsInStones = function(jewels, stones) {
     const jewelTypes = jewels.split('');
     let count = 0;
     
-    stones.split('').forEach(stone => {
-        if (jewelTypes.includes(stone)) count += 1
-    })
+    for(let i = 0; i < stones.length; i++) {
+        if (jewelTypes.includes(stones[i])) count += 1
+    }
     
     return count;
 };
