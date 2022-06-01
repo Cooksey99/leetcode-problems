@@ -3,7 +3,6 @@
  * @param {number} target
  * @return {number[]}
  */
-
 func twoSum(nums []int, target int) []int {
 
     mapVal := make(map[int]int)
