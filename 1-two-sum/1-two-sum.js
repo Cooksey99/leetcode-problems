@@ -3,17 +3,14 @@
  * @param {number} target
  * @return {number[]}
  */
-func twoSum(nums []int, target int) []int {
-
-    mapVal := make(map[int]int)
-	result := []int{}
-
-    for index, num := range nums {
-        if ele, mapping := mapVal[target - num]; mapping {
-            result = []int{ele,index}
-        }
-
-        mapVal[num] = index
+var twoSum = function(nums, target) {
+    
+    let obj = {};
+    
+    for (let i = 0; i < nums.length; i++) {
+        if (target - nums[i] in obj) {
+            return [obj[target-nums[i]], i] // { 7: 1}
+        } else obj[nums[i]] = i; //  {2: 0}
     }
-    return result
-}
+    return Object.values(obj);
+};
